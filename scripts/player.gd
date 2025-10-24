@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-const SPEED = 30000.0
+const SPEED = 10000.0
 var direction
 
 func _physics_process(delta: float) -> void:
@@ -15,3 +15,6 @@ func _physics_process(delta: float) -> void:
 	velocity = direction.normalized() * SPEED * delta
 	
 	move_and_slide()
+
+func reset_position():
+	print("penis")

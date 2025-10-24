@@ -3,7 +3,10 @@ extends CharacterBody2D
 var collision_data
 
 func _ready():
-	velocity = Vector2(300,0)
+	var random = randi_range(-1,1)
+	while random == 0:
+		random = randi_range(-1,1)
+	velocity = Vector2(300 * random,0)
 	global_position.x = 968.0
 	global_position.y = 493.0
 

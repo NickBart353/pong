@@ -5,25 +5,23 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_paxxb"]
 friction = 0.0
-bounce = 1.0
+bounce = 38.35
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrmi8"]
 size = Vector2(1920, 16)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4xfga"]
 friction = 0.0
-bounce = 1.0
+bounce = 22.35
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xfga"]
-size = Vector2(24, 1080)
+size = Vector2(24, 968.5)
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_paxxb")
 
-[node name="TopBorder" type="RigidBody2D" parent="." groups=["Border"]]
-mass = 1000000.0
+[node name="TopBorder" type="StaticBody2D" parent="." groups=["Border"]]
 physics_material_override = SubResource("PhysicsMaterial_paxxb")
-gravity_scale = 0.0
 
 [node name="Icon" type="Sprite2D" parent="TopBorder"]
 position = Vector2(960, 28.126965)
@@ -34,10 +32,8 @@ texture = ExtResource("1_4xfga")
 position = Vector2(960, 28)
 shape = SubResource("RectangleShape2D_hrmi8")
 
-[node name="BottomBorder" type="RigidBody2D" parent="." groups=["Border"]]
-mass = 1000000.0
+[node name="BottomBorder" type="StaticBody2D" parent="." groups=["Border"]]
 physics_material_override = SubResource("PhysicsMaterial_4xfga")
-gravity_scale = 0.0
 
 [node name="Icon" type="Sprite2D" parent="BottomBorder"]
 position = Vector2(959.99994, 1025)
@@ -52,12 +48,12 @@ shape = SubResource("RectangleShape2D_hrmi8")
 position = Vector2(-57, -19)
 
 [node name="Icon" type="Sprite2D" parent="RightBorder"]
-position = Vector2(1927.9999, 539.99994)
-scale = Vector2(0.18749787, 8.4375)
+position = Vector2(1927.9999, 545.5)
+scale = Vector2(0.18749787, 7.554687)
 texture = ExtResource("1_4xfga")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightBorder"]
-position = Vector2(1928, 540)
+position = Vector2(1928, 542.25)
 shape = SubResource("RectangleShape2D_4xfga")
 debug_color = Color(2.5027991e-06, 0.5774596, 0.8158677, 0.41960785)
 
@@ -65,12 +61,12 @@ debug_color = Color(2.5027991e-06, 0.5774596, 0.8158677, 0.41960785)
 position = Vector2(90, -2)
 
 [node name="Icon" type="Sprite2D" parent="LeftBorder"]
-position = Vector2(-10, 528)
-scale = Vector2(0.15625, 8.34375)
+position = Vector2(-10, 529)
+scale = Vector2(0.15625, 7.609375)
 texture = ExtResource("1_4xfga")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBorder"]
-position = Vector2(-10, 540)
+position = Vector2(-10, 529.5)
 shape = SubResource("RectangleShape2D_4xfga")
 
 [connection signal="body_exited" from="RightBorder" to="." method="_on_right_border_body_exited"]
