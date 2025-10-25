@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://djwewioeynbpj"]
+
+[ext_resource type="Script" uid="uid://tfnndaytre5u" path="res://scripts/game.gd" id="1_ks7w8"]
+[ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://scenes/sub_scenes/ball.tscn" id="2_3wwfn"]
+[ext_resource type="PackedScene" uid="uid://bbn5006du6bgy" path="res://scenes/sub_scenes/map.tscn" id="3_t5sjj"]
+[ext_resource type="PackedScene" uid="uid://qet1tfjqc86l" path="res://scenes/sub_scenes/player.tscn" id="4_leqql"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ks7w8")
+ball_scene = ExtResource("2_3wwfn")
+player_scene = ExtResource("4_leqql")
+
+[node name="Map" parent="." instance=ExtResource("3_t5sjj")]
+
+[node name="PlayerSpawnPath" type="Node2D" parent="."]
+
+[node name="Player" parent="PlayerSpawnPath" instance=ExtResource("4_leqql")]
+position = Vector2(127, 546)
+
+[node name="Player2" parent="PlayerSpawnPath" instance=ExtResource("4_leqql")]
+position = Vector2(1813, 542)
+
+[node name="BallSpawnPath" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftScore" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 77.0
+offset_right = 194.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 25
+text = "Score: 0"
+
+[node name="RightScore" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 1769.0
+offset_top = 73.0
+offset_right = 1830.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 25
+text = "Score: 0"
+
+[node name="MainMenu" type="Button" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -38.0
+offset_top = 72.0
+offset_right = 58.0
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+
+[node name="MainMenu" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -64.0
+offset_right = 22.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Pong"
+
+[node name="Server" type="Button" parent="UI/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Host"
+
+[node name="Client" type="Button" parent="UI/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Join"
+
+[node name="Exit" type="Button" parent="UI/MainMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[connection signal="pressed" from="UI/HUD/MainMenu" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/MainMenu/VBoxContainer/Server" to="." method="_on_server_pressed"]
+[connection signal="pressed" from="UI/MainMenu/VBoxContainer/Client" to="." method="_on_client_pressed"]
+[connection signal="pressed" from="UI/MainMenu/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

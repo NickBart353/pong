@@ -48,6 +48,8 @@ shape = SubResource("RectangleShape2D_hrmi8")
 position = Vector2(-57, -19)
 
 [node name="Icon" type="Sprite2D" parent="RightBorder"]
+modulate = Color(0.8498492, 0, 0.2804903, 1)
+self_modulate = Color(1, 0.37616125, 0.4862373, 1)
 position = Vector2(1927.9999, 545.5)
 scale = Vector2(0.18749787, 7.554687)
 texture = ExtResource("1_4xfga")
@@ -61,6 +63,7 @@ debug_color = Color(2.5027991e-06, 0.5774596, 0.8158677, 0.41960785)
 position = Vector2(90, -2)
 
 [node name="Icon" type="Sprite2D" parent="LeftBorder"]
+modulate = Color(0, 0.5019608, 0, 1)
 position = Vector2(-10, 529)
 scale = Vector2(0.15625, 7.609375)
 texture = ExtResource("1_4xfga")
