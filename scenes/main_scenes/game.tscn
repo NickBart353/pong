@@ -10,21 +10,36 @@ script = ExtResource("1_ks7w8")
 ball_scene = ExtResource("2_3wwfn")
 player_scene = ExtResource("4_leqql")
 
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://qet1tfjqc86l")
+spawn_path = NodePath("../Players")
+spawn_limit = 2
+
+[node name="BallSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bkgsgplmdrdk4")
+spawn_path = NodePath("..")
+spawn_limit = 1
+
 [node name="Map" parent="." instance=ExtResource("3_t5sjj")]
 
-[node name="PlayerSpawnPath" type="Node2D" parent="."]
+[node name="PlayerSpawnPoints" type="Node2D" parent="."]
 
-[node name="Player" parent="PlayerSpawnPath" instance=ExtResource("4_leqql")]
-position = Vector2(127, 546)
+[node name="PlayerOneSpawn" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(127, 519)
 
-[node name="Player2" parent="PlayerSpawnPath" instance=ExtResource("4_leqql")]
-position = Vector2(1813, 542)
+[node name="PlayerTwoSpawn" type="Marker2D" parent="PlayerSpawnPoints"]
+position = Vector2(1829, 513)
 
-[node name="BallSpawnPath" type="Node2D" parent="."]
+[node name="BallSpawnPoint" type="Node2D" parent="."]
+position = Vector2(-175, 243)
+
+[node name="Marker2D" type="Marker2D" parent="BallSpawnPoint"]
+position = Vector2(1160, 264)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HUD" type="Control" parent="UI"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,6 +119,10 @@ text = "Join"
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Exit"
+
+[node name="Players" type="Node" parent="."]
+
+[node name="Ball" type="Node" parent="."]
 
 [connection signal="pressed" from="UI/HUD/MainMenu" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/MainMenu/VBoxContainer/Server" to="." method="_on_server_pressed"]

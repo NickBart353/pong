@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkgsgplmdrdk4"]
+[gd_scene load_steps=5 format=3 uid="uid://bkgsgplmdrdk4"]
 
 [ext_resource type="Texture2D" uid="uid://f0utvxt0fri5" path="res://icon.svg" id="1_7s4qf"]
 [ext_resource type="Script" uid="uid://nr5m628p2ysr" path="res://scripts/ball.gd" id="1_cxlvu"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cajdm"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxlvu"]
 size = Vector2(32, 34)
 
 [node name="Ball" type="CharacterBody2D" groups=["ball"]]
 script = ExtResource("1_cxlvu")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_cajdm")
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(16, 16.999998)
